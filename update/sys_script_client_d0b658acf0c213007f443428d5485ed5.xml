@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>ClientUtilsAjax testing interface to call the root utilities library.</description>
+        <field>active</field>
+        <global>true</global>
+        <messages/>
+        <name>ClientUtilsTester</name>
+        <order/>
+        <script><![CDATA[var location = 'CS: ClientUtilsTester';
+
+function onLoad() {
+	
+	g_form.clearMessages();
+	var logJSON = {
+		type : 'info',
+		message: 'The message is {0}',
+		valueList : ['Hello World!'],
+		location : location,
+	};
+	
+	g_form.addInfoMessage('firing glide ajax');
+	var systemLogger = new GlideAjax('x_snc_clientutils.ClientUtilsAjax');
+    systemLogger.addParam('sysparm_name','systemLogger');
+    systemLogger.addParam('sysparm_logjson', JSON.stringify(logJSON));
+    systemLogger.getXML(function(result){ });   // no callback action
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-09 23:27:47</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d0b658acf0c213007f443428d5485ed5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ClientUtilsTester</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="ClientUtilsAjax" source="x_snc_clientutils">812694acf0c213007f443428d5485e78</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ClientUtilsAjax">812694acf0c213007f443428d5485e78</sys_scope>
+        <sys_update_name>sys_script_client_d0b658acf0c213007f443428d5485ed5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-09 23:27:47</sys_updated_on>
+        <table>incident</table>
+        <type>onLoad</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

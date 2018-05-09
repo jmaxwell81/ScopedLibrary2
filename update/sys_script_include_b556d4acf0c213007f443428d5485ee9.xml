@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_clientutils.ClientUtilsAjax</api_name>
+        <client_callable>true</client_callable>
+        <description>Ajax interface to give Client-side scripts access to the Root Library functions.</description>
+        <name>ClientUtilsAjax</name>
+        <script><![CDATA[var utils = new x_snc_root_library.UtilsLibrary();
+
+var ClientUtilsAjax = Class.create();
+ClientUtilsAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	systemLogger : function() {
+		var logjson = JSON.parse(this.getParameter('sysparm_logjson'));
+
+		utils.parseAndWriteLog(logjson);
+	},
+	
+    type: 'ClientUtilsAjax'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-09 23:25:34</sys_created_on>
+        <sys_id>b556d4acf0c213007f443428d5485ee9</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>ClientUtilsAjax</sys_name>
+        <sys_package display_value="ClientUtilsAjax" source="x_snc_clientutils">812694acf0c213007f443428d5485e78</sys_package>
+        <sys_policy>protected</sys_policy>
+        <sys_scope display_value="ClientUtilsAjax">812694acf0c213007f443428d5485e78</sys_scope>
+        <sys_update_name>sys_script_include_b556d4acf0c213007f443428d5485ee9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-09 23:26:03</sys_updated_on>
+    </sys_script_include>
+</record_update>

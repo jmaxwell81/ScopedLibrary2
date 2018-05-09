@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Client side utilities.</description>
+        <global>false</global>
+        <name>x_snc_clientutils.ClientUtil</name>
+        <script><![CDATA[var utils = Class.create();
+
+utils.info = function(message, list, location) {
+	utils.log(message, list, location, 'info');
+};
+utils.warn = function(message, list, location) {
+	utils.log(message, list, location, 'warn');
+};
+utils.error = function(message, list, location) {
+	utils.log(message, list, location, 'error');
+};
+
+utils.log = function(message, list, location, type) {
+	try {
+		var logJSON = {
+			type : type,
+			message: message,
+			valueList : list,
+			location : location
+		};
+
+		var systemLogger = new GlideAjax('x_snc_clientutils.ClientUtilsAjax');
+		systemLogger.addParam('sysparm_name','systemLogger');
+		systemLogger.addParam('sysparm_logjson', JSON.stringify(logJSON));
+		systemLogger.getXML(function(result){});   // no callback action
+	}
+	catch(err) {
+		g_form.addErrorMessage('---> ERROR: ' + err);
+	}
+};]]></script>
+        <script_name>ClientUtil</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-09 23:30:50</sys_created_on>
+        <sys_id>c8579cacf0c213007f443428d5485e15</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_clientutils.ClientUtil</sys_name>
+        <sys_package display_value="ClientUtilsAjax" source="x_snc_clientutils">812694acf0c213007f443428d5485e78</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ClientUtilsAjax">812694acf0c213007f443428d5485e78</sys_scope>
+        <sys_update_name>sys_ui_script_c8579cacf0c213007f443428d5485e15</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-09 23:30:50</sys_updated_on>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>
